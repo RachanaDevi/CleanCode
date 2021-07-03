@@ -12,11 +12,14 @@ public class SplitTemporaryVariable {
     public double getDistanceTravelled(int time) {
         double result = 0.5 * primaryAcc() * primaryTime(time) * primaryTime(time);
         if (secondaryTime(time) > 0) {
-            double primaryVel = primaryAcc() * delay;
             final double secondaryAcc = (primaryForce + secondaryForce) / mass;
-            result += primaryVel * secondaryTime(time) + 0.5 * secondaryAcc * secondaryTime(time) * secondaryTime(time);
+            result += primaryVel() * secondaryTime(time) + 0.5 * secondaryAcc * secondaryTime(time) * secondaryTime(time);
         }
         return result;
+    }
+
+    private double primaryVel() {
+        return primaryAcc() * delay;
     }
 
     private int secondaryTime(int time) {
