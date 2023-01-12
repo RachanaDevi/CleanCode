@@ -75,21 +75,21 @@ public class OutputParameter {
     private Map<String, String> counts;
 
     // what they user will do with, if you look at the signature, the user will not know that it is an output parameter
-    public List<Integer> getListFrom(Event event, List<integer> list) {
-        List<Integer> finalResult = new ArrayList<Integer>();
-       finalResult =  calculateCount(event); // 1, 2 , 3
- // someone can manipulate nobody is stopping you from doing it
-        // library banayi hai
-        // output parameter, library karate
-
-        // the side effect
-        finalResult.remove(100);
-
-// undo it  //
-//        secondResult = sums.addSums(event, finalResult); // 4,5,6 pure function
-
-        return finalResult;
-    }
+//    public List<Integer> getListFrom(Event event, List<Integer> list) {
+//        List<Integer> finalResult = new ArrayList<Integer>();
+//       finalResult =  calculateCount(event); // 1, 2 , 3
+// // someone can manipulate nobody is stopping you from doing it
+//        // library banayi hai
+//        // output parameter, library karate
+//
+//        // the side effect
+//        finalResult.remove(100);
+//
+//// undo it  //
+////        secondResult = sums.addSums(event, finalResult); // 4,5,6 pure function
+//
+//        return finalResult;
+//    }
 
     private void calculateCount(Event event, List<Integer> finalResult) {
         counts.keySet().forEach(key -> {
