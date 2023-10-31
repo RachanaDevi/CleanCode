@@ -1,5 +1,7 @@
 package refactoring;
 
+import java.util.Objects;
+
 public class IntroduceForeignMethod {
     // suppose you want to add the method nextDate() but you can't touch the class Date or modify it
     // You can create a foreign method and introduce it in this class
@@ -20,7 +22,7 @@ public class IntroduceForeignMethod {
 // Immutable class and out of reach
 class Date {
 
-    private String value;
+    private final String value;
 
     public Date(String value) {
         this.value = value;
@@ -32,5 +34,20 @@ class Date {
 
     public String MM_DD_YYYYFormat() {
         return "12-02-2023";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        // had to comment so subclass can equate with it
+//        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || !(o instanceof Date)) return false;
+        Date date = (Date) o;
+        return Objects.equals(value, date.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
